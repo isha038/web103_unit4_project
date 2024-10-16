@@ -3,8 +3,9 @@ import path from 'path'
 import favicon from 'serve-favicon'
 import dotenv from 'dotenv'
 
-// import the router from your routes file
 
+// import the router from your routes file
+import customItemsRoutes from './routes/customItemsRoutes.js';
 
 dotenv.config()
 
@@ -13,6 +14,11 @@ const PORT = process.env.PORT || 3000
 const app = express()
 
 app.use(express.json())
+
+
+
+// API routes for custom items
+app.use('/api/custom-items', customItemsRoutes);
 
 if (process.env.NODE_ENV === 'development') {
     app.use(favicon(path.resolve('../', 'client', 'public', 'lightning.png')))
