@@ -10,3 +10,24 @@
     overflow-x: hidden;
     padding-bottom: 50px;
 }
+.car-details-card {
+    background: var(--card-background-color);
+    padding: 30px;
+    margin: 20px auto;
+    border-radius: 10px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.6);
+    max-width: 500px;
+    color: var(--color);
+    text-align: center;
+}
+
+.button-group {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  
+  .button-group button {
+    width: 45%;
+  }
+  

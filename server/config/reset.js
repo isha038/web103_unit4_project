@@ -1,11 +1,16 @@
 import { pool } from './database.js';
 
+const dropTables = `
+  DROP TABLE IF EXISTS CustomItem CASCADE;
+  DROP TABLE IF EXISTS Features CASCADE;
+  DROP TABLE IF EXISTS FeatureOptions CASCADE;
+  DROP TABLE IF EXISTS SelectedOptions CASCADE;
+`
 // Table for storing the car with basic information (name and total price)
 const createCustomItemTableQuery = `
   CREATE TABLE IF NOT EXISTS CustomItem (
     id SERIAL PRIMARY KEY,
-    car_name VARCHAR(100) NOT NULL,
-    total_price NUMERIC NOT NULL DEFAULT 0
+    car_name VARCHAR(100) NOT NULL
   )
 `;
 
@@ -87,6 +92,8 @@ async function seedFeaturesAndOptions() {
 
 async function resetDatabase() {
   try {
+    await pool.query(dropTables);  // Drop existing tables 
+    console.log('Tables dropped successfully');
     // Create the tables
     await pool.query(createCustomItemTableQuery);
     console.log('CustomItem table created successfully.');

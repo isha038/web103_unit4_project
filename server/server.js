@@ -15,7 +15,9 @@ const app = express()
 
 app.use(express.json())
 
+import featuresRouter from './routes/customItemsRoutes.js';
 
+app.use('/api', featuresRouter);
 
 // API routes for custom items
 app.use('/api/custom-items', customItemsRoutes);
